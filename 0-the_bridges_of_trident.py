@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from collections import Counter
-from random import randint
+import random
 import Orange
 
 data = Orange.data.Table("bridges.tab")
@@ -63,5 +63,7 @@ for x in data.domain.features:
 
 print
 print "Przykładowa próbka (ok. 5% instancji):"
-for i in range(int(round(0.05 * len(data)))):
-    print data[randint(0, len(data))]
+count = int(round(0.05 * len(data)));
+smpl = random.sample(range(0, len(data)), count)
+for i in smpl:
+    print data[i]
